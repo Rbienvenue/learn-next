@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const { name, description } = body;
 
-        const item = prisma.items.create({
+        const item = await prisma.items.create({
             data: {
                 name,
                 description
@@ -21,3 +21,4 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({message: "Failed to create item"}, { status: 500 });
     }
 }
+
